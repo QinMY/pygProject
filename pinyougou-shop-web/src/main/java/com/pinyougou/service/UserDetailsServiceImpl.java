@@ -1,6 +1,7 @@
 package com.pinyougou.service;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -36,10 +37,16 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		//得到商家对象
 		TbSeller seller = sellerService.findOne(username);
 		if(seller!=null){
+			System.out.println("状态："+seller.getStatus());
 			if(seller.getStatus().equals("1")){
+				System.out.println("seller"+seller);
 				return new User(username,seller.getPassword(),grantAuths);
-				}
+			}else{
+				return null;
+			}			
+		}else{
+			return null;
 		}
-		return null;
 	}
+
 }

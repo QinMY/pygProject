@@ -11,10 +11,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 @RequestMapping("/login")
 public class LoginController {
 	@RequestMapping("name")
-	public Map name(){
+	public Map<String, String> name(){
 		String name=SecurityContextHolder.getContext()
 .getAuthentication().getName();
-		Map map=new HashMap();
+		Map<String, String> map=new HashMap<String, String>();
 		map.put("loginName", name);
 		return map ;
 	}	
