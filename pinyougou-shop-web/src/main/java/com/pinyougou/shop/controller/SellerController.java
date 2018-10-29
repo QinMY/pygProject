@@ -49,6 +49,7 @@ public class SellerController {
 	 */
 	@RequestMapping("/add")
 	public Result add(@RequestBody TbSeller seller){
+		System.out.println("seller"+seller);
 		//密码加密
 		BCryptPasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
 		String password = passwordEncoder.encode(seller.getPassword());//加密
